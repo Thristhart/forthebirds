@@ -15,5 +15,17 @@
   "bugs": {
     "url": "https://github.com/Thristhart/forthebirds/issues"
   },
-  "homepage": "https://github.com/Thristhart/forthebirds#readme"
+  "homepage": "https://github.com/Thristhart/forthebirds#readme",
+  "dependencies": {
+    "three": "^0.93.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.4",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "rollup": "^0.60.7",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-stream": "^1.24.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
 }
