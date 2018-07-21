@@ -80,8 +80,8 @@ async function reload() {
 const child_process = require('child_process');
 
 function throwIfDirty(done) {
-  child_process.exec(`git diff-index --quiet HEAD --`, (err, stdout, stderr) => {
-    if(err) {
+  child_process.exec(`git diff --shortstat`, (err, stdout, stderr) => {
+    if(stdout) {
       return done("Uncommited changes, refusing to proceed");
     }
     child_process.exec(`git ls-files --exclude-standard --others`, (err, stdout, stderr) => {
