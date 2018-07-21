@@ -366,6 +366,7 @@ class FarmRenderer {
     });
 
     this.renderer.render(this.scene, this.camera);
+    window.DEBUG.innerText = state.timestamp;
   }
 }
 

@@ -66,7 +66,6 @@ class Sprite {
   set frame(newFrame) {
     this.material.offset.set(newFrame / this.sheetGridWidth, 1 / this.sheetGridHeight);
     this.shadowMap.offset.copy(this.material.offset);
-    console.log(this.material.repeat);
     this.shadowMap.repeat.copy(this.material.repeat);
   }
 

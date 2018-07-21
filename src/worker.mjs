@@ -2,15 +2,12 @@ const TICK_RATE = 120; //hz
 const TIME_PER_TICK = 1 / TICK_RATE * 1000; // milliseconds
 
 let timestamp = 0;
+let sharedBuffer = null;
+let sharedBufferView = null;
 
 async function tick(dt) {
   timestamp += dt;
-  postMessage({
-    type: "stateUpdate",
-    state: {
-      timestamp,
-    },
-  });
+  Atomics.store(sharedBufferView, 0, timestamp);
 }
 
 async function sleep(duration) {
@@ -33,9 +30,15 @@ async function loop() {
   }
 }
 
+function initSharedBuffer(buffer) {
+  sharedBuffer = buffer;
+  sharedBufferView = new Uint16Array(sharedBuffer);
+}
+
 self.addEventListener("message", async function(event) {
   let data = event.data;
   if(data.type === "start") {
+    initSharedBuffer(data.buffer);
     setTimeout(loop);
   }
   if(data.type === "simulate") {
