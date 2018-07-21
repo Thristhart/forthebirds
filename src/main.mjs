@@ -16,12 +16,7 @@ if(!window.SharedArrayBuffer) {
 }
 
 const sharedBuffer = new SharedArrayBuffer(8);
-const sharedBufferView = new Uint16Array(sharedBuffer);
-
-gameloop.addEventListener("message", (event) => {
-  let data = event.data;
-  state.timestamp = data[0];
-});
+const sharedBufferView = new Uint32Array(sharedBuffer);
 
 import FarmRenderer from "./components/farm_render.mjs";
 import Grid from "./components/model/grid.mjs";

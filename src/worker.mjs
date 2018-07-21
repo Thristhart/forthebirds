@@ -32,7 +32,7 @@ async function loop() {
 
 function initSharedBuffer(buffer) {
   sharedBuffer = buffer;
-  sharedBufferView = new Uint16Array(sharedBuffer);
+  sharedBufferView = new Uint32Array(sharedBuffer);
 }
 
 self.addEventListener("message", async function(event) {
