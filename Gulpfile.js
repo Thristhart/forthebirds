@@ -115,5 +115,5 @@ gulp.task(watch);
 gulp.task(serve);
 gulp.task("dev", gulp.series("build", gulp.parallel(serve, watch)));
 
-gulp.task("deploy", pushToGithub);
+gulp.task("deploy", gulp.series(throwIfDirty, pushToGithub));
 gulp.task("publish", gulp.series("build", "deploy"));
