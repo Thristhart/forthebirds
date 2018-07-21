@@ -21,8 +21,17 @@
         justify-content: center;
         align-items: center;
       }
+      #debug {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        width: 100vw;
+        height: 100vw;
+      }
     </style>
     <div id="container">
+      <div id="debug"></div>
       <canvas id="display"></canvas>
     </div>
     <script src="./app.js"></script>
