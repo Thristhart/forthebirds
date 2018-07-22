@@ -354,7 +354,7 @@ class FarmRenderer {
 
     let sunAngle = dayPercentage * Math.PI * 2;
 
-    sunAngle -= Math.PI /  2;
+    sunAngle -= Math.PI;
 
     let brightness = Math.max(0.1, Math.cos(sunAngle));
 
@@ -366,7 +366,6 @@ class FarmRenderer {
     });
 
     this.renderer.render(this.scene, this.camera);
-    window.DEBUG.innerText = state.timestamp;
   }
 }
 

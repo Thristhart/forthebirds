@@ -20,6 +20,7 @@ const sharedBufferView = new Uint32Array(sharedBuffer);
 
 import FarmRenderer from "./components/farm_render.mjs";
 import Grid from "./components/model/grid.mjs";
+import UI from "./components/ui.mjs";
 
 const canvas = document.querySelector("canvas");
 const grid = new Grid(25, 25);
@@ -36,16 +37,11 @@ const farmView = new FarmRenderer(canvas, grid);
 farmView.updateScene();
 
 function fitCanvasToScreen() {
-  farmView.resize(DISPLAY_SIZE, DISPLAY_SIZE);
+  let aspectRatio = window.innerHeight / window.innerWidth;
+  farmView.resize(DISPLAY_SIZE, DISPLAY_SIZE * aspectRatio);
 }
 
 fitCanvasToScreen();
-
-
-async function main() {
-
-}
-
 
 let lastUpdateTimestamp = null;
 
@@ -58,11 +54,10 @@ function tick(timestamp) {
   let deltaTime = timestamp - lastUpdateTimestamp;
   state.timestamp = Atomics.load(sharedBufferView, 0);
   farmView.update(deltaTime, state);
+  UI.update(deltaTime, state);
 }
 
 requestAnimationFrame(tick);
-
-main();
 
 gameloop.postMessage({type: "start", buffer: sharedBuffer});
 

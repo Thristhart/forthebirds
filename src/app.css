@@ -1,0 +1,81 @@
+@font-face {
+  font-family: 'Improbable';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url('assets/fonts/improbable/Improbable.ttf');
+}
+@font-face {
+  font-family: 'Zapper';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url('assets/fonts/zapper/Zapper.ttf');
+}
+
+#UI {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  /* we set this to none so that the overall container doesn't block input */
+  pointer-events: none;   
+}
+#UI > * {
+  /* and then unset it here so that children do */
+  pointer-events: initial;
+}
+
+#UI .holo {
+  color: #abc9ff;
+  background: rgba(20, 20, 20, 0.4);
+  border: 2px solid #abc9ff;
+  font-family: 'Zapper', sans-serif;
+}
+#UI .holo:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-style: solid;
+  border-color: transparent;
+}
+#UI .holo:before {
+  border-width: 0.2em;
+  border-left-color: #abc9ff;
+  border-bottom-color: #abc9ff;
+}
+
+
+#topright {
+  width: 3.5em;
+  height: 1em;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  margin: 0.6em;
+  padding: 0.6em;
+  padding-left: 0.3em;
+  padding-right: 1em;
+  
+  font-size: 2em;
+}
+
+#clock:after {
+  content: "pm";
+  font-size: 0.4em;
+  padding-left: 0.2em;
+}
+#clock.am:after {
+  content: "am";
+}
+
+mono {
+  width: 0.55em;
+  text-align: center;
+  display: inline-block;
+}

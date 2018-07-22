@@ -1,7 +1,9 @@
 const TICK_RATE = 120; //hz
 const TIME_PER_TICK = 1 / TICK_RATE * 1000; // milliseconds
 
-let timestamp = 0;
+import CONSTANTS from "./constants.mjs";
+
+let timestamp = CONSTANTS.DAY_LENGTH / 24 * 6; // start at 6am
 let sharedBuffer = null;
 let sharedBufferView = null;
 
