@@ -50,7 +50,8 @@ function buildHTML() {
 
 function buildCSS() {
   return gulp.src("./src/**/*.css")
-    .pipe(gulp.dest("./dist/"));
+    .pipe(gulp.dest("./dist/"))
+    .pipe(browserSync.stream());
 }
 
 function copyAssets() {
@@ -61,7 +62,7 @@ function copyAssets() {
 function watch() {
   gulp.watch("./src/**/*.mjs", gulp.series(buildJS, buildWorker, reload));
   gulp.watch("./src/**/*.html", gulp.series(buildHTML, reload));
-  gulp.watch("./src/**/*.css", gulp.series(buildCSS, reload));
+  gulp.watch("./src/**/*.css", buildCSS);
   gulp.watch("./src/assets/**/*", gulp.series(copyAssets, reload));
 }
 
